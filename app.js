@@ -44,6 +44,8 @@
   function render() {
     const v = T.view(state, Date.now());
     $('slot').textContent = String(v.slot).padStart(2, '0');
+    const intervalMinutes = T.INTERVAL / 60000;
+    $('slot-range').textContent = `(${(v.slot - 1) * intervalMinutes} à ${v.slot * intervalMinutes} minutes)`;
     $('clock').textContent = T.format(v.within / 1000);
     $('total').textContent = T.format(v.elapsed / 1000);
     $('progress-fill').style.width = `${v.within / T.INTERVAL * 100}%`;
