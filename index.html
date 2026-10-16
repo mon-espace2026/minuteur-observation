@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f7f3">
+  <title>Minuteur d’observation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="timer-core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <p id="notice" class="notice" role="status" hidden></p>
+
+    <section class="timer-card" aria-label="Minuteur d’observation">
+      <div class="card-top"><span>INTERVALLE · 2 MIN</span><span id="status" class="status">Prêt</span></div>
+      <div class="slot"><span class="label">PLAGE ACTUELLE</span><div id="slot" class="slot-number">01</div></div>
+      <div id="clock" class="clock" role="timer" aria-label="Temps écoulé dans la plage">00:00</div>
+      <p class="clock-label">écoulées dans cette plage</p>
+      <div id="progress" class="progress" role="progressbar" aria-label="Progression de la plage" aria-valuemin="0" aria-valuemax="120" aria-valuenow="0"><div id="progress-fill"></div></div>
+      <div class="controls"><button id="primary" class="button primary">Démarrer l’observation</button><button id="finish" class="button secondary" hidden>Terminer</button></div>
+      <div class="total"><span>Temps total d’observation</span><strong id="total">00:00</strong></div>
+    </section>
+
+    <footer>Minuteur d’observation <span aria-hidden="true">·</span> Version locale</footer>
+    <p id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+  </main>
+
+  <dialog id="confirm-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <h2 id="dialog-title">Terminer l’observation ?</h2>
+    <p id="dialog-description">Le chronomètre sera arrêté. Le temps total et la plage resteront affichés.</p>
+    <div class="dialog-buttons"><button id="cancel" class="button secondary">Annuler</button><button id="confirm" class="button primary">Terminer</button></div>
+  </dialog>
+</body>
+</html>
